@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{Title}</title>
+	<meta name="description" content="{MetaDescription}" />
+	<script src="https://use.fontawesome.com/e690a86a60.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://static.tumblr.com/wgijwsy/jgemkyt9x/jquery.photoset-grid.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,800,600,600italic' rel='stylesheet' type='text/css' />
+	<link href='http://static.tumblr.com/deki8n7/oiCoayi40/static.css' rel='stylesheet' type='text/css' />	<meta name="text:Link 1 URL" content="" />
+	<meta name="text:Link 1 Label" content="" />
+	<meta name="text:Link 2 URL" content="" />
+	<meta name="text:Link 2 Label" content="" />
+	<meta name="text:Link 3 URL" content="" />
+	<meta name="text:Link 3 Label" content="" />
+	<meta name="text:Link 4 URL" content="" />
+	<meta name="text:Link 4 Label" content="" />
+	<meta name="text:Link 5 URL" content="" />
+	<meta name="text:Link 5 Label" content="" />
+	<meta name="text:Link 6 URL" content="" />
+	<meta name="text:Link 6 Label" content="" />
+	<meta name="color:Main Sidebar Background" content="{color:MainSidebarBackground}" />
+	<meta name="color:Top Sidebar Background" content="#FFFFFF" />
+	<meta name="image:Header Image" content=""/>
+	<meta name="image:Sidebar Image" content=""/>
+	<meta name="if:Full Sidebar" content="1" />
+	<meta name="if:Use Sidebar Border" content="1" />
+	<meta name="text:Custom Sidebar Text" content="" />
+	<meta name="if:Use Nav Border" content="0" />
+	<meta name="if:Use Search Bar" content="0" />
+	<meta name="color:Content Background" content="#D0C9EB" />
+	<meta name="color:Post Background" content="#FFFFFF" />
+	<meta name="color:Accent Color" content="#E80074" />
+	<meta name="color:Link Color" content="#E80074" />
+	<meta name="color:Text Color" content="#222222" />
+	<meta name="select:TextSize" content="14px" title="small" />
+	<meta name="select:TextSize" content="16px" title="medium" />
+	<meta name="select:TextSize" content="18px" title="large" />
+	<meta name="if:Use Post Borders" content="0" />
+	<meta name="if:Show Source" content="1" />
+	<meta name="if:Use Source Icon" content="0" />
+	<meta name="text:Google Analytics ID" content="UA-XXXXX-Y" />
+	<meta name="text:Custom Footer" content="" />
+	<link rel="icon" type="image/png" href="{Favicon}" sizes="16x16">
+<style>
+/*only css styles dependent on meta tags are included here, the rest are inside the static.css file */
+body, html{color:{color:Text Color};font-size:{select:TextSize};background:{color:Content Background};}
+a, .tag-page span.tag, .search-page span.search_query{color:{color:Link Color};}
+blockquote{border-left:.02rem solid {color:Text Color};}
+/*SIDEBAR STYLES*/
+#sidebar{background:{color:Main Sidebar Background} url('{image:Sidebar Image}');}
+#sidebar header{background:{color:Top Sidebar Background} url('{image:Header Image}');}
+#mini-bio h2{color:{color:Text Color};}
+/*GENERIC POST STYLING*/
+.tag-page p, .search-page p{color:{color:Text Color};}
+.post, footer, .tag-page, .search-page{background:{color:Post Background};}
+.post-header h3 {color:{color:Text Color};}
+/*LINK STYLES*/
+.link-wrap{background:{color:Top Sidebar Background};}
+/*AUDIO STYLES*/
+.audio-box{color:{color:Post Background};}
+.play_progress{
+background:{color:Post Background};
+}
+/*ASK STYLES*/
+.ask-question{background:{color:Link Color};}
+.ask-question:after {	border-color: {color:Link Color} {color:Link Color} transparent transparent;}
+/*PAGE FOOTER*/
+footer{background:{color:Post Background};}
+
+</style>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '{text:Google Analytics ID}', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+<!-- Theme scripts by Denise Nadal-->
+<script>
+$(document).ready(function(){
+/*dynamically resize text*/
+	switch("{select:TextSize}"){
+		case "14px":
+			$("head").append("<style> @media all and (max-width:768px){body, html{font-size:2.5vw;}} @media all and (min-width:768px) and (max-width:1024px){body, html {font-size:1.4vw;}} </style>");
+			break;
+		case "16px":
+			$("head").append("<style> @media all and (max-width:768px){body, html{font-size:3vw;}} @media all and (min-width:768px) and (max-width:1024px){body, html {font-size:1.7vw;}} </style>");
+			break;
+		case "18px":
+			$("head").append("<style> @media all and (max-width:768px){body, html{font-size:4vw;}} @media all and (min-width:768px) and (max-width:1024px){body, html {font-size:2vw;}} </style>");
+			break;
+	};
+/*insert various css for theme options*/
+	$("head").find("style").append("{block:IfFullSidebar} #sidebar header{background:none;} {/block:IfFullSidebar} {block:IfUseNavBorder} nav ul{border-bottom:3px solid {color:Accent Color};} {/block:IfUseNavBorder}{block:IfUsePostBorders} .post-header{border-bottom:3px solid {color:Accent Color};padding-bottom:.4rem;} .post-footer{border-top:3px solid {color:Accent Color};} {/block:IfUsePostBorders} {block:IfUseSidebarBorder} #sidebar header{border-bottom:3px solid {color:Accent Color};} .sidebar-icon{border:3px solid {color:Accent Color};}{/block:IfUseSidebarBorder}");
+/*styling ask & submit pages*/	
+	var url = $(location).attr('href');
+	var ask_url = "{BlogURL}"+"ask";
+	var sub_url = "{BlogURL}"+"submit";
+	if (url == ask_url) {
+		$(".post-body h2, .post-footer").hide();
+		$(".post-header h3 a").text("{AskLabel}");
+		$(".post-header h3 a").css({"font-size": "3.6rem","line-height":"4rem","font-weight": "800"});
+	}
+	if (url == sub_url) {
+		$(".post-body h2, .post-footer").hide();
+		$(".post-header h3 a").text("{SubmitLabel}");
+		$(".post-header h3 a").css({"font-size": "3.6rem","line-height":"4rem","font-weight": "800"});
+	}
+	/*Scripting Tag Search Function*/
+
+	
+	/*Adding Username to Footer Copyright info*/
+	var userName = "{BlogURL}";
+	userName=userName.replace("http://","");
+	userName=userName.replace(".tumblr.com/","");
+	$("#user_name").text(userName);
+/*sticky footer & Header Resizer*/
+	$(window).resize(function(){
+		var footerHeight = $('footer').outerHeight();		
+		$('main').css({'marginBottom':'-' + footerHeight + 'px'});
+		var title_width = $("#blog_title a").width();
+		var box_width = $("#header-offset").width();
+		var text_size = parseInt($("#blog_title").css("font-size"));
+		while (title_width > box_width){
+			text_size-=1
+			$("#blog_title").css("font-size",text_size+"px");
+			var title_width = $("#blog_title a").width();
+		}
+	});
+	$(window).resize();
+});
+</script>
+</head>
+<body>
+<div class="page-wrap">
+	<div id="sidebar">
+		<header class="sidebar-inner">
+			<div id="header-offset">
+				<h1 id="blog_title"><a href="{BlogURL}">{Title}</a></h1>
+				<a href="{BlogURL}"><img class="avatar sidebar-icon" src="{PortraitURL-128}"></a>
+			</div><!--end header-offset div -->
+		</header>
+		<div id="sidebar-bottom" class="sidebar-inner">
+			<nav>
+				<ul>
+					<li><a href="{BlogURL}">Home</a></li>
+					<li><a href="{BlogURL}archive">{lang:Archive}</a></li>
+					{block:AskEnabled}
+					<li><a href="{BlogURL}ask">{AskLabel}</a></li>
+					{/block:AskEnabled}
+					{block:SubmissionsEnabled}
+					<li><a href="{BlogURL}submit">{SubmitLabel}</a></li>
+					{/block:SubmissionsEnabled}
+					{Block:IfLink1URL}
+					<li><a href="{text:Link 1 URL}">{Block:IfLink1Label}{text:Link 1 Label}{Block:IfLink1Label}</a></li>
+					{/Block:IfLink1URL}
+					{Block:IfLink2URL}
+					<li><a href="{text:Link 2 URL}">{Block:IfLink2Label}{text:Link 2 Label}{Block:IfLink2Label}</a></li>
+					{/Block:IfLink2URL}
+					{Block:IfLink3URL}
+					<li><a href="{text:Link 3 URL}">{Block:IfLink3Label}{text:Link 3 Label}{Block:IfLink3Label}</a></li>
+					{/Block:IfLink3URL}
+					{Block:IfLink4URL}
+					<li><a href="{text:Link 4 URL}">{Block:IfLink4Label}{text:Link 4 Label}{Block:IfLink4Label}</a></li>
+					{/Block:IfLink4URL}
+					{Block:IfLink5URL}
+					<li><a href="{text:Link 5 URL}">{Block:IfLink5Label}{text:Link 5 Label}{Block:IfLink5Label}</a></li>
+					{/Block:IfLink5URL}
+					{Block:IfLink6URL}
+					<li><a href="{text:Link 6 URL}">{Block:IfLink6Label}{text:Link 6 Label}{Block:IfLink6Label}</a></li>
+					{/Block:IfLink6URL}					
+				</ul>
+			</nav>
+			<div id="mini-bio">
+			{block:Description}
+				<h2 class="description">{Description}</h2>
+			{/block:Description}
+			<p>{text:Custom Sidebar Text}</p>
+			</div><!-- END mini-bio -->
+		</div><!-- end sidebar-bottom -->
+	</div><!-- END Sidebar -->
+	<main>
+	{block:SearchPage}
+	<div class="search-page message">
+		{block:SearchResults}
+	  	 <p class="search-result">{lang:Search results for SearchQuery 2}</p>
+	  	{/block:SearchResults}
+
+	  	{block:NoSearchResults}
+	  	<p class="search-result">{lang:Sorry no results for SearchQuery 2}</p>
+	  	{/block:NoSearchResults}
+	  <span class="divider"></span>
+	</div>
+	{/block:SearchPage}
+	{block:TagPage}
+		<div class="tag-page message">
+		  <p class="tag-wrapper">{lang:Showing posts tagged Tag 2}</p>
+		  <span class="divider"></span>
+		</div>
+	{/block:TagPage}
+	{block:Posts}
+		<div class="post"><!-- Begin Post Block-->
+			<div class="post-header">
+				{block:IfShowSource}{block:ContentSource}<a class="source_icon" href="{SourceURL}">
+					{block:IfUseSourceIcon}<svg width="20" height="20"><polygon fill="{color:Link Color}" points="0,0 20,0 20,20 "/></svg>{/block:IfUseSourceIcon}
+					{block:IfNotUseSourceIcon}<span class="lowercase">{lang:Source}</span>{/block:IfNotUseSourceIcon}
+				</a>{/block:ContentSource}{/block:IfShowSource}	
+				<h3><a href="{Permalink}">{12Hour}{CapitalAmPm}, {ShortMonth} {DayOfMonth}{DayOfMonthSuffix}, {Year}</a>
+				{block:Submission} submitted by <a href="{SubmitterURL}">{Submitter}</a>{/block:Submission}
+				{block:RebloggedFrom} <span class="lowercase">{lang:Reblogged from}</span> <a href="{ReblogParentURL}">{ReblogParentName}</a> {/block:RebloggedFrom}</h3>
+			</div><!-- end post header-->
+			{block:Text}
+			<div class="post-body text"><!-- Begin Text Post-->
+				{block:Title}<h2>{Title}</h2>{/block:Title}
+				{Body}
+			</div><!-- end post body for TEXT post-->
+			{/block:Text}
+			{block:Video}<!-- BEGIN VIDEO POST-->
+			<div class="post-body video">
+				<figure class="video">
+					{Video-500}
+					{block:caption}
+					<figcaption>
+						{caption}
+					</figcaption>
+					{/block:caption}
+				</figure>
+			</div><!-- end post body for Video posts-->
+			{/block:Video}
+			{block:Audio}
+			<div class="post-body audio">
+				<figure class="audio">
+					{block:AudioEmbed} 
+						{AudioEmbed}
+						{block:Artist}
+							<p class="audio-info"><strong>Artist: </strong>{Artist}<br>
+						{/block:Artist}
+						{block:Album}
+							<strong>Album: </strong>{Album}<br>
+						{/block:Album}
+						{block:TrackName}
+							<strong>Song: </strong>{TrackName}</p>
+						{/block:TrackName}
+					{/block:AudioEmbed}
+					{block:AudioPlayer} 
+                    <div class="audio-box">
+						{AudioPlayerBlack}
+						{block:AlbumArt}
+							<img src="{AlbumArtURL}" alt="Music is {TrackName} by {Artist}" />
+						{/block:AlbumArt}
+						{block:Artist}
+							<p class="audio-info"><strong>Artist: </strong>{Artist}<br>
+						{/block:Artist}
+						{block:Album}
+							<strong>Album: </strong>{Album}<br>
+						{/block:Album}
+						{block:TrackName}
+							<strong>Song: </strong>{TrackName}</p>
+						{/block:TrackName}
+                    </div>
+					{/block:AudioPlayer}
+					{block:caption}
+					<figcaption>
+						{caption}
+					</figcaption>
+					{/block:caption}
+				</figure>
+			</div><!-- end post body for AUDIO posts-->
+			{/block:Audio}
+			{block:Link}
+			<div class="post-body link">
+				<div class="link-wrap">
+                    {block:Thumbnail}
+                    <style scoped>
+                    .link-wrap{ 
+					background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.3)),url('{Thumbnail}');
+					background-size:cover;padding:2rem;}
+					.link-wrap h2, .link-excerpt{text-shadow: 0px 0px 1.5rem rgba(0,0,0, 0.5);border:none;}
+					.link-box{background:rgba(0,0,0,.5); border: 1px solid #333;color:{color:Post Background};}            
+                    </style>
+                    {/block:Thumbnail}
+					<div class="link-box">
+						<h2><a href="{URL}" target="{Target}">{Name}</a></h2>
+						{block:Excerpt} 
+						<blockquote class="link-excerpt">
+							{Excerpt}
+							{block:Author}<em class="link-author">&mdash;{Author}</em> {/block:Author}
+						</blockquote>
+						{/block:Excerpt}
+					</div><!-- link-box -->
+                </div><!-- end link-wrap -->
+				{block:Description} 
+					{Description}
+				{/block:Description}
+			</div><!-- end post body for LINK POSTS-->
+			{/block:Link}
+			{block:Chat}<!-- BEGIN CHAT POST -->
+			<div class="post-body chat">
+				{block:Title} <h2>{Title}</h2>{/block:Title}
+				<ul class="chat-body">
+					{block:Lines}<li>{block:Label}<strong>{Label} </strong>{/block:Label}{Line}</li> {/block:Lines}
+				</ul>
+			</div><!-- end post body-->
+			{/block:Chat}
+			{block:Quote}<!-- BEGIN QUOTE POST-->
+			<div class="post-body quote">
+				<h2><span class="beginning-quote">&ldquo;</span>{Quote}&rdquo;</h2>
+				{block:Source}<p> &mdash; {Source}</p>{/block:Source}
+			</div><!-- end post body-->
+			{/block:Quote}
+			{block:Answer}<!-- BEGIN ASK POST-->
+			<div class="post-body ask">
+				<div class="ask-question">
+					<h3>{Asker}</h3>
+					<p>{Question}</p>
+				</div>
+				<img class="asker-avatar"src="{AskerPortraitURL-128}" />
+				{block:Answerer}
+				<div class="ask-answer">
+					<img class="anwser-avatar" src="{AnswererPortraitURL-128}" />
+					<h3>{Answerer}</h3>
+					<div class="answer-content">
+						{Answer}
+					</div><!--END ANSWER-CONTENT-->
+				</div>
+				{/block:Answerer}
+			    <div class="replies answer-content"><!-- BEGIN REPLIES AREA-->
+					{Replies}
+				</div>
+			</div><!-- end post body-->
+			{/block:Answer}
+			{block:Photo}<!-- BEGIN PHOTO POST-->
+			<div class="post-body photo">
+				<figure class="photo">
+					{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}" class="photo-content" />{LinkCloseTag}
+				</figure>
+				{block:Caption} 
+				<figcaption class="photo caption">
+					{Caption}
+				</figcaption>
+				{/block:Caption}
+			</div><!-- end post body-->
+			{/block:Photo}
+			{block:Photoset}<!-- START PHOTOSET-->
+			<div class="post-body photoset" data-layout="{PhotosetLayout}" data-id="photoset{PostID}">
+                    {block:Photos}
+                      <img src="{PhotoURL-500}" class="photo-post" />
+                    {/block:Photos}
+				{block:Caption} 
+				<figcaption class="photoset caption">
+					{Caption}
+				</figcaption>
+				{/block:Caption}
+			</div><!-- end post body FOR PHOTOSET-->
+			{/block:Photoset}
+			<div class="post-footer">
+				<div class="note-wrap">
+					<p><a href="{permalink}#notes">{NoteCountWithLabel}</a></p>
+				</div><!--end note-wrap div -->
+				<div class="post-controls">
+					<ul>
+						<li>{LikeButton}</li>
+						<li>{ReblogButton}</li>
+					</ul>
+				</div><!--end post-controls div -->
+				{block:HasTags} 
+				<div class="tag-wrap">
+					<ul class="tag-list">
+						{block:Tags} <li><a href="{TagURLChrono}">#{Tag} &nbsp;&nbsp;&nbsp;</a></li>{/block:Tags} 
+					</ul>
+				</div><!--end tag-wrap div -->
+				{/block:HasTags} 
+				{block:Permalink}<!-- begin permalink page footer -->
+				{block:PostNotes}
+					<div class="post-notes">
+						{PostNotes}
+				 	</div>
+				  {/block:PostNotes}
+				{/block:Permalink}<!-- end permalink page footer -->
+			</div><!-- end post footer-->
+		</div><!-- end post -->
+		{/block:Posts}
+	</main>
+	<div class="footer-wrap">
+	<footer>
+	{block:Pagination}
+		<div class="pagination">
+			<div class="pag-prev">
+			{block:PreviousPage}
+				<a href="{PreviousPage}"><i class="fa fa-chevron-left" aria-hidden="true"></i>{lang:Prev}</a>
+			{/block:PreviousPage}
+			</div><!--end pag-prev div -->
+			<div class="pag-next">
+			{block:NextPage}
+				<a href="{NextPage}">{lang:Next}<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			{/block:NextPage}
+			</div> <!--end pag-next div -->
+		</div><!--end pagination div -->
+		{/block:Pagination}
+		<div class="footer-info">
+			<p>{text:Custom Footer}<br> original content copyright of <a href="{BlogURL}"><span id="user_name">username</span></a>, {CopyrightYears}. theme by <a href="http://denisenadal.com">Denise Nadal, Web & Graphic Design</a></p>
+		</div>
+	</footer>
+	</div>
+</div><!-- end page-wrap -->
+<script>
+/*photoset Grid resizer script credit: http://www.jqueryscript.net/demo/jQuery-Plugin-For-Flexible-Tumblr-Photoset-Grid-Layout-Photoset-Grid/*/
+$(document).ready(function(){
+	$('.photoset').photosetGrid({
+	gutter: '5px',
+  highresLinks: true,
+  onInit: function(){},
+  onComplete: function(){
+    $('.photoset').attr('style', '');
+  }/*end onComplete function*/
+	});/*end photoset function which receives dictionary as parameter*/
+});/*end document ready function*/
+</script>
+</body>
+</html>
