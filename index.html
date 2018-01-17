@@ -67,7 +67,8 @@ background:{color:Post Background};
 .ask-question:after {	border-color: {color:Link Color} {color:Link Color} transparent transparent;}
 /*PAGE FOOTER*/
 footer{background:{color:Post Background};}
-
+/*MISCELL CSS FIXES*/
+nav ul{padding:1rem 0;}
 </style>
 <!-- Google Analytics -->
 <script>
@@ -208,11 +209,11 @@ $(document).ready(function(){
 			<div class="post-header">
 				{block:IfShowSource}{block:ContentSource}<a class="source_icon" href="{SourceURL}">
 					{block:IfUseSourceIcon}<svg width="20" height="20"><polygon fill="{color:Link Color}" points="0,0 20,0 20,20 "/></svg>{/block:IfUseSourceIcon}
-					{block:IfNotUseSourceIcon}<span class="lowercase">{lang:Source}</span>{/block:IfNotUseSourceIcon}
+					{block:IfNotUseSourceIcon}<span class="lowercase"> {lang:Source}</span>{/block:IfNotUseSourceIcon}
 				</a>{/block:ContentSource}{/block:IfShowSource}	
 				<h3><a href="{Permalink}">{12Hour}{CapitalAmPm}, {ShortMonth} {DayOfMonth}{DayOfMonthSuffix}, {Year}</a>
 				{block:Submission} submitted by <a href="{SubmitterURL}">{Submitter}</a>{/block:Submission}
-				{block:RebloggedFrom} <span class="lowercase">{lang:Reblogged from}</span> <a href="{ReblogParentURL}">{ReblogParentName}</a> {/block:RebloggedFrom}</h3>
+				{block:RebloggedFrom} <span class="lowercase"> {lang:Reblogged from}</span> <a href="{ReblogParentURL}">{ReblogParentName}</a> {/block:RebloggedFrom}</h3>
 			</div><!-- end post header-->
 			{block:Text}
 			<div class="post-body text"><!-- Begin Text Post-->
@@ -403,13 +404,12 @@ $(document).ready(function(){
 		</div><!--end pagination div -->
 		{/block:Pagination}
 		<div class="footer-info">
-			<p>{text:Custom Footer}<br> original content copyright of <a href="{BlogURL}"><span id="user_name">username</span></a>, {CopyrightYears}. theme by <a href="http://denisenadal.com">Denise Nadal, Web & Graphic Design</a></p>
+			<p>{text:Custom Footer}<br> original content copyright of <a href="{BlogURL}"><span id="user_name">{Username}</span></a>, {CopyrightYears}. theme by <a href="http://denisenadal.com">Denise Nadal, Web & Graphic Design</a></p>
 		</div>
 	</footer>
 	</div>
 </div><!-- end page-wrap -->
 <script>
-/*photoset Grid resizer script credit: http://www.jqueryscript.net/demo/jQuery-Plugin-For-Flexible-Tumblr-Photoset-Grid-Layout-Photoset-Grid/*/
 $(document).ready(function(){
 	$('.photoset').photosetGrid({
 	gutter: '5px',
